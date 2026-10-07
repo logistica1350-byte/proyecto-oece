@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Certificación - Contrataciones Públicas Perú</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1e40af;
+            --primary-dark: #1e3a8a;
+            --secondary: #059669;
+            --danger: #dc2626;
+            --warning: #f59e0b;
+            --success: #10b981;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-500: #6b7280;
+            --gray-700: #374151;
+            --gray-900: #111827;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--gray-50);
+            color: var(--gray-900);
+            line-height: 1.6;
+        }
+
+        /* HEADER */
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        /* MAIN CONTAINER */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* INICIO - PANTALLA PRINCIPAL */
+        .screen-inicio {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 60vh;
+            gap: 2rem;
+        }
+
+        .info-box {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .info-box h2 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .info-box ul {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-box li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .info-box li::before {
+            content: "✓";
+            color: var(--success);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background-color: #047857;
+            transform: translateY(-2px);
+        }
+
+        /* EXAMEN - PANTALLA PRINCIPAL */
+        .screen-examen {
+            display: none;
+        }
+
+        .examen-container {
+            display: grid;
+            grid-template-columns: 1fr 4fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .navegador-preguntas {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+        }
+
+        .navegador-preguntas h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .info-examen {
+            background-color: var(--gray-100);
+            padding: 1rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .info-examen div {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.25rem 0;
+        }
+
+        .numerador-preguntas {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 0.5rem;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .num-pregunta {
+            width: 100%;
+            aspect-ratio: 1;
+            border: 2px solid var(--gray-300);
+            background: white;
+            color: var(--gray-900);
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .num-pregunta:hover {
+            transform: scale(1.05);
+        }
+
+        .num-pregunta.actual {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary-dark);
+        }
+
+        .num-pregunta.respondida {
+            background-color: var(--success);
+            color: white;
+            border-color: var(--success);
+        }
+
+        .num-pregunta.marcada::after {
+            content: "⚑";
+            position: absolute;
+            font-size: 0.8rem;
+            color: var(--warning);
+        }
+
+        .contenedor-examen {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .cronometro {
+            position: fixed;
+            top: 100px;
+            right: 2rem;
+            background: white;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            font-weight: bold;
+            font-size: 1.5rem;
+            z-index: 1000;
+            text-align: center;
+        }
+
+        .cronometro.advertencia {
+            background-color: var(--warning);
+            color: white;
+        }
+
+        .cronometro.critico {
+            background-color: var(--danger);
+            color: white;
+            animation: parpadeo 1s infinite;
+        }
+
+        @keyframes parpadeo {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .pregunta-titulo {
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--gray-200);
+        }
+
+        .pregunta-texto {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: var(--gray-900);
+        }
+
+        .alternativas {
+            display: grid;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .alternativa {
+            padding: 1rem;
+            border: 2px solid var(--gray-300);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: white;
+        }
+
+        .alternativa:hover {
+            border-color: var(--primary);
+            background-color: var(--gray-50);
+        }
+
+        .alternativa input[type="radio"] {
+            margin-right: 0.75rem;
+            cursor: pointer;
+            accent-color: var(--primary);
+        }
+
+        .alternativa.seleccionada {
+            background-color: #dbeafe;
+            border-color: var(--primary);
+        }
+
+        .controles-examen {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 2px solid var(--gray-200);
+        }
+
+        .controles-examen button {
+            flex: 1;
+            padding: 0.75rem 1.5rem;
+        }
+
+        .btn-marcar {
+            background-color: var(--warning);
+            color: white;
+        }
+
+        .btn-marcar:hover {
+            background-color: #d97706;
+        }
+
+        .btn-marcar.marcado {
+            background-color: var(--primary);
+        }
+
+        /* RESULTADOS */
+        .screen-resultados {
+            display: none;
+        }
+
+        .resultados-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .resumen-general {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .tarjeta-resultado {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .tarjeta-resultado.correctas {
+            background: linear-gradient(135deg, var(--success) 0%, #059669 100%);
+        }
+
+        .tarjeta-resultado.incorrectas {
+            background: linear-gradient(135deg, var(--danger) 0%, #991b1b 100%);
+        }
+
+        .tarjeta-resultado.sin-responder {
+            background: linear-gradient(135deg, var(--gray-500) 0%, #374151 100%);
+        }
+
+        .tarjeta-resultado h4 {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+        }
+
+        .tarjeta-resultado .numero {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        .tarjeta-resultado .porcentaje {
+            font-size: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .tabla-resultados {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 2rem;
+        }
+
+        .tabla-resultados thead {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .tabla-resultados th,
+        .tabla-resultados td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .tabla-resultados tbody tr:hover {
+            background-color: var(--gray-50);
+        }
+
+        .retroalimentacion {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+
+        .retroalimentacion.correcta {
+            border-left-color: var(--success);
+        }
+
+        .retroalimentacion.incorrecta {
+            border-left-color: var(--danger);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .examen-container {
+                grid-template-columns: 1fr;
+            }
+
+            .navegador-preguntas {
+                position: static;
+            }
+
+            .cronometro {
+                position: static;
+                margin-bottom: 1rem;
+            }
+
+            .numerador-preguntas {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .header h1 {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* MODAL CONFIRMACIÓN */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.activo {
+            display: flex;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            max-width: 400px;
+        }
+
+        .modal-content h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .modal-content p {
+            margin-bottom: 1.5rem;
+            color: var(--gray-700);
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .modal-buttons button {
+            flex: 1;
+            padding: 0.75rem 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>📋 Simulador de Certificación</h1>
+        <p>Contrataciones Públicas Peruanas - Ley 32069</p>
+    </div>
+
+    <div class="container">
+        <!-- PANTALLA INICIO -->
+        <div id="screenInicio" class="screen-inicio">
+            <div class="info-box">
+                <h2>Información del Examen</h2>
+                <ul>
+                    <li>72 preguntas de opción múltiple</li>
+                    <li>120 minutos para completar</li>
+                    <li>Nivel de dificultad: AVANZADO</li>
+                    <li>Temas: Contrataciones Públicas Peruanas (Ley 32069)</li>
+                    <li>Respuestas normativas y jurídicamente sustentadas</li>
+                    <li>Análisis automático de desempeño por temática</li>
+                </ul>
+                <div class="button-group">
+                    <button class="btn btn-primary" onclick="iniciarExamen()">INICIAR EXAMEN</button>
+                    <button class="btn btn-secondary" onclick="abrirModoPractica()">MODO PRÁCTICA</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- PANTALLA EXAMEN -->
+        <div id="screenExamen" class="screen-examen">
+            <div class="cronometro" id="cronometro">
+                <div>120:00</div>
+            </div>
+
+            <div class="examen-container">
+                <div class="navegador-preguntas">
+                    <h3>NAVEGACIÓN</h3>
+                    <div class="info-examen">
+                        <div>
+                            <span>Respondidas:</span>
+                            <span id="contRespondidas">0</span>
+                        </div>
+                        <div>
+                            <span>Pendientes:</span>
+                            <span id="contPendientes">72</span>
+                        </div>
+                        <div>
+                            <span>Marcadas:</span>
+                            <span id="contMarcadas">0</span>
+                        </div>
+                    </div>
+                    <div class="numerador-preguntas" id="numeradorPreguntas"></div>
+                </div>
+
+                <div class="contenedor-examen">
+                    <div class="pregunta-titulo">
+                        Pregunta <span id="numeroPregunta">1</span> de 72
+                    </div>
+
+                    <div class="pregunta-texto" id="textoPregunta"></div>
+
+                    <div class="alternativas" id="alternativas"></div>
+
+                    <div class="controles-examen">
+                        <button class="btn btn-secondary" onclick="preguntaAnterior()">← Anterior</button>
+                        <button class="btn btn-secondary btn-marcar" id="btnMarcar" onclick="marcarPregunta()">⚑ Marcar</button>
+                        <button class="btn btn-secondary" onclick="siguientePregunta()">Siguiente →</button>
+                        <button class="btn btn-primary" onclick="mostrarConfirmacionFinal()">Finalizar Examen</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PANTALLA RESULTADOS -->
+        <div id="screenResultados" class="screen-resultados">
+            <div class="resultados-container">
+                <h2 style="color: var(--primary); margin-bottom: 2rem;">Resultados del Examen</h2>
+
+                <div class="resumen-general">
+                    <div class="tarjeta-resultado correctas">
+                        <h4>Respuestas Correctas</h4>
+                        <div class="numero" id="numCorrectas">0</div>
+                        <div class="porcentaje" id="porcCorrectas">0%</div>
+                    </div>
+                    <div class="tarjeta-resultado incorrectas">
+                        <h4>Respuestas Incorrectas</h4>
+                        <div class="numero" id="numIncorrectas">0</div>
+                        <div class="porcentaje" id="porcIncorrectas">0%</div>
+                    </div>
+                    <div class="tarjeta-resultado sin-responder">
+                        <h4>Sin Responder</h4>
+                        <div class="numero" id="numSinResponder">0</div>
+                        <div class="porcentaje" id="porcSinResponder">0%</div>
+                    </div>
+                    <div class="tarjeta-resultado" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">
+                        <h4>Calificación Final</h4>
+                        <div class="numero" id="calificacion">0</div>
+                        <div class="porcentaje">%</div>
+                    </div>
+                </div>
+
+                <h3 style="color: var(--primary); margin-top: 2rem; margin-bottom: 1rem;">Desempeño por Temática</h3>
+                <table class="tabla-resultados">
+                    <thead>
+                        <tr>
+                            <th>Temática</th>
+                            <th>Correctas</th>
+                            <th>Incorrectas</th>
+                            <th>% Acierto</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaDesempenio"></tbody>
+                </table>
+
+                <h3 style="color: var(--primary); margin-bottom: 1rem;">Análisis de Fortalezas y Debilidades</h3>
+                <div id="analisisResultados"></div>
+
+                <div style="margin-top: 2rem; text-align: center;">
+                    <button class="btn btn-primary" onclick="volverAlInicio()">Nuevo Intento</button>
+                    <button class="btn btn-secondary" style="margin-left: 1rem;" onclick="descargarResultados()">Descargar Resultados</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL CONFIRMACIÓN -->
+    <div id="modalConfirmacion" class="modal">
+        <div class="modal-content">
+            <h3>¿Finalizar Examen?</h3>
+            <p id="mensajeConfirmacion">¿Está seguro de que desea finalizar? Esta acción no puede revertirse.</p>
+            <div class="modal-buttons">
+                <button class="btn btn-secondary" onclick="cerrarModal()">Continuar Examen</button>
+                <button class="btn btn-primary" onclick="finalizarExamen()">Finalizar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // VARIABLES GLOBALES
+        let bancoPreguntasCompleto = [];
+        let preguntasExamen = [];
+        let preguntaActual = 0;
+        let respuestas = {};
+        let marcadas = new Set();
+        let tiempoRestante = 7200; // 120 minutos en segundos
+        let examenActivo = false;
+        let intervalo = null;
+
+        // CARGAR BANCO DE PREGUNTAS
+        async function cargarBanco() {
+            try {
+                const response = await fetch('./data/banco_preguntas.json');
+                if (!response.ok) throw new Error('No se pudo cargar el banco de preguntas');
+                bancoPreguntasCompleto = await response.json();
+                console.log(`✓ Banco cargado: ${bancoPreguntasCompleto.length} preguntas`);
+            } catch (error) {
+                console.error('Error al cargar banco:', error);
+                alert('Error: No se pudo cargar el banco de preguntas. Verifique que el archivo data/banco_preguntas.json existe.');
+            }
+        }
+
+        // INICIALIZAR
+        window.addEventListener('DOMContentLoaded', async () => {
+            await cargarBanco();
+        });
+
+        // FUNCIONES PRINCIPALES
+        function iniciarExamen() {
+            if (bancoPreguntasCompleto.length === 0) {
+                alert('El banco de preguntas no se ha cargado. Intente recargar la página.');
+                return;
+            }
+
+            // Seleccionar 72 preguntas aleatorias respetando distribución temática
+            preguntasExamen = seleccionarPreguntasAleatorias(72);
+            respuestas = {};
+            marcadas.clear();
+            preguntaActual = 0;
+            tiempoRestante = 7200;
+            examenActivo = true;
+
+            // Cambiar pantalla
+            document.getElementById('screenInicio').style.display = 'none';
+            document.getElementById('screenExamen').style.display = 'block';
+
+            // Inicializar interfaz
+            construirNumerador();
+            mostrarPregunta();
+            iniciarCronometro();
+        }
+
+        function abrirModoPractica() {
+            alert('Modo Práctica: Próximamente con preguntas individuales sin cronómetro');
+        }
+
+        function seleccionarPreguntasAleatorias(cantidad) {
+            // Implementación simplificada: seleccionar aleatoriamente
+            const preguntas = [...bancoPreguntasCompleto]
+                .sort(() => Math.random() - 0.5)
+                .slice(0, cantidad);
+            return preguntas;
+        }
+
+        function construirNumerador() {
+            const container = document.getElementById('numeradorPreguntas');
+            container.innerHTML = '';
+            for (let i = 0; i < preguntasExamen.length; i++) {
+                const num = document.createElement('div');
+                num.className = 'num-pregunta';
+                num.textContent = i + 1;
+                num.onclick = () => irAPregunta(i);
+                if (i === 0) num.classList.add('actual');
+                container.appendChild(num);
+            }
+        }
+
+        function mostrarPregunta() {
+            const pregunta = preguntasExamen[preguntaActual];
+
+            document.getElementById('numeroPregunta').textContent = preguntaActual + 1;
+            document.getElementById('textoPregunta').textContent = pregunta.pregunta;
+
+            const containerAlternativas = document.getElementById('alternativas');
+            containerAlternativas.innerHTML = '';
+
+            pregunta.alternativas.forEach((alt, idx) => {
+                const div = document.createElement('div');
+                div.className = 'alternativa';
+                if (respuestas[preguntaActual] === alt.id) div.classList.add('seleccionada');
+
+                div.innerHTML = `
+                    <input type="radio" name="respuesta" value="${alt.id}"
+                           ${respuestas[preguntaActual] === alt.id ? 'checked' : ''}>
+                    <span>${alt.id}. ${alt.texto}</span>
+                `;
+
+                div.onclick = () => seleccionarRespuesta(alt.id);
+                containerAlternativas.appendChild(div);
+            });
+
+            // Actualizar botón de marcar
+            const btnMarcar = document.getElementById('btnMarcar');
+            if (marcadas.has(preguntaActual)) {
+                btnMarcar.classList.add('marcado');
+                btnMarcar.textContent = '⚑ Marcada';
+            } else {
+                btnMarcar.classList.remove('marcado');
+                btnMarcar.textContent = '⚑ Marcar';
+            }
+
+            actualizarEstadisticas();
+        }
+
+        function seleccionarRespuesta(opcion) {
+            respuestas[preguntaActual] = opcion;
+            mostrarPregunta();
+        }
+
+        function marcarPregunta() {
+            if (marcadas.has(preguntaActual)) {
+                marcadas.delete(preguntaActual);
+            } else {
+                marcadas.add(preguntaActual);
+            }
+            mostrarPregunta();
+        }
+
+        function siguientePregunta() {
+            if (preguntaActual < preguntasExamen.length - 1) {
+                preguntaActual++;
+                actualizarNumerador();
+                mostrarPregunta();
+            }
+        }
+
+        function preguntaAnterior() {
+            if (preguntaActual > 0) {
+                preguntaActual--;
+                actualizarNumerador();
+                mostrarPregunta();
+            }
+        }
+
+        function irAPregunta(index) {
+            preguntaActual = index;
+            actualizarNumerador();
+            mostrarPregunta();
+        }
+
+        function actualizarNumerador() {
+            document.querySelectorAll('.num-pregunta').forEach((el, idx) => {
+                el.classList.remove('actual');
+                if (idx === preguntaActual) el.classList.add('actual');
+            });
+        }
+
+        function actualizarEstadisticas() {
+            const respondidas = Object.keys(respuestas).length;
+            const pendientes = preguntasExamen.length - respondidas;
+            document.getElementById('contRespondidas').textContent = respondidas;
+            document.getElementById('contPendientes').textContent = pendientes;
+            document.getElementById('contMarcadas').textContent = marcadas.size;
+        }
+
+        function iniciarCronometro() {
+            intervalo = setInterval(() => {
+                tiempoRestante--;
+                const minutos = Math.floor(tiempoRestante / 60);
+                const segundos = tiempoRestante % 60;
+                const cronometro = document.getElementById('cronometro');
+                cronometro.querySelector('div').textContent =
+                    `${String(minutos).padStart(2, '0')}:${String(segundos).padStart(2, '0')}`;
+
+                if (tiempoRestante <= 300) {
+                    cronometro.classList.add('advertencia');
+                }
+                if (tiempoRestante <= 60) {
+                    cronometro.classList.add('critico');
+                }
+                if (tiempoRestante <= 0) {
+                    finalizarExamen();
+                }
+            }, 1000);
+        }
+
+        function mostrarConfirmacionFinal() {
+            document.getElementById('modalConfirmacion').classList.add('activo');
+        }
+
+        function cerrarModal() {
+            document.getElementById('modalConfirmacion').classList.remove('activo');
+        }
+
+        function finalizarExamen() {
+            examenActivo = false;
+            clearInterval(intervalo);
+
+            // Calcular resultados
+            let correctas = 0;
+            let incorrectas = 0;
+            let sinResponder = preguntasExamen.length - Object.keys(respuestas).length;
+
+            Object.keys(respuestas).forEach(index => {
+                if (respuestas[index] === preguntasExamen[index].respuesta_correcta) {
+                    correctas++;
+                } else {
+                    incorrectas++;
+                }
+            });
+
+            const porcentaje = Math.round((correctas / preguntasExamen.length) * 100);
+
+            // Mostrar resultados
+            document.getElementById('screenExamen').style.display = 'none';
+            document.getElementById('screenResultados').style.display = 'block';
+
+            document.getElementById('numCorrectas').textContent = correctas;
+            document.getElementById('porcCorrectas').textContent = Math.round((correctas / preguntasExamen.length) * 100) + '%';
+            document.getElementById('numIncorrectas').textContent = incorrectas;
+            document.getElementById('porcIncorrectas').textContent = Math.round((incorrectas / preguntasExamen.length) * 100) + '%';
+            document.getElementById('numSinResponder').textContent = sinResponder;
+            document.getElementById('porcSinResponder').textContent = Math.round((sinResponder / preguntasExamen.length) * 100) + '%';
+            document.getElementById('calificacion').textContent = porcentaje;
+
+            // Análisis por temática (simplificado)
+            generarAnalisisDesempenio(correctas, incorrectas);
+
+            cerrarModal();
+        }
+
+        function generarAnalisisDesempenio(correctas, incorrectas) {
+            const analisis = document.getElementById('analisisResultados');
+            let html = '';
+
+            if (correctas >= 60) {
+                html += '<div class="retroalimentacion correcta"><strong>✓ Excelente desempeño:</strong> Domina la normativa de contrataciones públicas.</div>';
+            } else if (correctas >= 50) {
+                html += '<div class="retroalimentacion correcta"><strong>✓ Buen desempeño:</strong> Tiene conocimiento sólido pero requiere refuerzo en algunos temas.</div>';
+            } else if (correctas >= 40) {
+                html += '<div class="retroalimentacion incorrecta"><strong>⚠ Desempeño insuficiente:</strong> Necesita fortalecer sus conocimientos de contrataciones públicas.</div>';
+            } else {
+                html += '<div class="retroalimentacion incorrecta"><strong>✗ Desempeño deficiente:</strong> Se recomienda estudio intensivo de la normativa.</div>';
+            }
+
+            analisis.innerHTML = html;
+        }
+
+        function volverAlInicio() {
+            document.getElementById('screenResultados').style.display = 'none';
+            document.getElementById('screenInicio').style.display = 'flex';
+        }
+
+        function descargarResultados() {
+            alert('Funcionalidad de descarga disponible próximamente');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,250 @@
+{
+  "version": "1.0.0",
+  "fecha_generacion": "2026-10-07",
+  "fecha_corte_normativa": "2026-05-22",
+  "nivel": "Avanzado",
+  "total_preguntas": 200,
+  "institucion": "OECE - Contrataciones Públicas Peruanas",
+  "preguntas": [
+    {
+      "id": "P001",
+      "competencia": "Actuaciones Preparatorias",
+      "tema": "Contenido del expediente de contratación",
+      "subtema": "Documentos según objeto contractual",
+      "nivel_cognitivo": "Analizar",
+      "dificultad": "Muy difícil",
+      "tipo": "Caso práctico",
+      "pregunta": "Una entidad estatal requiere contratar la supervisión de una obra de construcción por S/ 150,000 soles. Durante la preparación del expediente de contratación, el titular de la dependencia de contrataciones debe incluir determinados documentos. ¿Cuál NO forma parte obligatoriamente del contenido del expediente?",
+      "alternativas": [
+        {"id": "A", "texto": "Términos de referencia o especificaciones técnicas de los servicios de supervisión."},
+        {"id": "B", "texto": "Plan de actuaciones preparatorias con cronograma de actividades."},
+        {"id": "C", "texto": "Garantía de plazo en ejecución de la supervisión, conforme a especificaciones técnicas."},
+        {"id": "D", "texto": "Reporte de factibilidad de abastecimiento realizado antes de iniciar el procedimiento."}
+      ],
+      "respuesta_correcta": "C",
+      "explicacion": "Según la Ley 32069, Art. 40-41, el expediente debe contener requerimiento, términos de referencia, estudio de factibilidad, análisis de riesgos, estrategia de contratación y bases integradas. La garantía de plazo es requisito contractual, no documento del expediente.",
+      "fundamento": {
+        "ley": "Ley 32069",
+        "articulos": ["Art. 40", "Art. 41", "Art. 42"],
+        "reglamento": "DS 009-2025-EF",
+        "fuente": "Ley 32069 y DS 009-2025-EF"
+      }
+    },
+    {
+      "id": "P002",
+      "competencia": "Actuaciones Preparatorias",
+      "tema": "Autoridad que aprueba el expediente",
+      "subtema": "Competencia y aprobación",
+      "nivel_cognitivo": "Aplicar",
+      "dificultad": "Difícil",
+      "tipo": "Aplicación normativa",
+      "pregunta": "Un gobierno local necesita contratar servicios de mantenimiento por S/ 85,000. Conforme a la Ley 32069, ¿quién es la autoridad competente que debe aprobar el expediente de contratación?",
+      "alternativas": [
+        {"id": "A", "texto": "El Consejo Municipal en sesión plenaria."},
+        {"id": "B", "texto": "El titular de la dependencia de contrataciones."},
+        {"id": "C", "texto": "El alcalde u otra autoridad equivalente con capacidad de decisión sobre gasto público."},
+        {"id": "D", "texto": "El director de la Oficina de Administración."}
+      ],
+      "respuesta_correcta": "C",
+      "explicacion": "La Ley 32069, Art. 42, establece que el expediente debe ser aprobado por la máxima autoridad de la entidad o quien tenga delegada esta facultad. En municipalidades, es el alcalde.",
+      "fundamento": {
+        "ley": "Ley 32069",
+        "articulos": ["Art. 42"],
+        "reglamento": "DS 009-2025-EF",
+        "fuente": "Ley 32069 y DS 009-2025-EF"
+      }
+    },
+    {
+      "id": "P003",
+      "competencia": "Actuaciones Preparatorias",
+      "tema": "Custodia y conservación",
+      "subtema": "Plazos de archivo",
+      "nivel_cognitivo": "Comprender",
+      "dificultad": "Medio-Alto",
+      "tipo": "Conocimiento normativo",
+      "pregunta": "Según la Ley 32069 y su Reglamento, ¿por cuánto tiempo debe conservarse el expediente de contratación después de culminado el contrato?",
+      "alternativas": [
+        {"id": "A", "texto": "Mínimo tres (3) años."},
+        {"id": "B", "texto": "Mínimo cinco (5) años."},
+        {"id": "C", "texto": "Hasta que se cumplan todos los plazos de garantía."},
+        {"id": "D", "texto": "Conforme a normativa de gestión documentaria de la entidad."}
+      ],
+      "respuesta_correcta": "B",
+      "explicacion": "La Ley 32069, Art. 43, establece que el expediente debe conservarse mínimo cinco (5) años después de culminado el contrato para asegurar trazabilidad y disponibilidad de información.",
+      "fundamento": {
+        "ley": "Ley 32069",
+        "articulos": ["Art. 43"],
+        "reglamento": "DS 009-2025-EF",
+        "fuente": "Ley 32069 y DS 009-2025-EF"
+      }
+    },
+    {
+      "id": "P004",
+      "competencia": "Actuaciones Preparatorias",
+      "tema": "Análisis de riesgos obligatorio",
+      "subtema": "Aplicación a toda contratación",
+      "nivel_cognitivo": "Analizar",
+      "dificultad": "Muy difícil",
+      "tipo": "Comparación de alternativas",
+      "pregunta": "Una entidad pública desea contratar: (i) servicios de limpieza S/ 40,000; (ii) obra de infraestructura S/ 500,000; (iii) consultoría especializada S/ 150,000. ¿En cuál/cuáles es OBLIGATORIO incluir análisis de riesgos y estrategia de contratación?",
+      "alternativas": [
+        {"id": "A", "texto": "Solo en (ii) la obra por mayor complejidad."},
+        {"id": "B", "texto": "En (i) y (ii)."},
+        {"id": "C", "texto": "En todas: (i), (ii) y (iii), conforme a Ley 32069."},
+        {"id": "D", "texto": "Solo en (ii) y (iii)."}
+      ],
+      "respuesta_correcta": "C",
+      "explicacion": "La Ley 32069, Art. 45-46, exige análisis de riesgos y estrategia de contratación para TODA contratación de bienes, servicios y obras, sin excepciones por monto o naturaleza.",
+      "fundamento": {
+        "ley": "Ley 32069",
+        "articulos": ["Art. 40", "Art. 45", "Art. 46"],
+        "reglamento": "DS 009-2025-EF",
+        "fuente": "Ley 32069 y DS 009-2025-EF"
+      }
+    },
+    {
+      "id": "P005",
+      "competencia": "Fase de Selección",
+      "tema": "Procedimientos de selección",
+      "subtema": "Tipos y características",
+      "nivel_cognitivo": "Comprender",
+      "dificultad": "Difícil",
+      "tipo": "Conocimiento normativo",
+      "pregunta": "La Ley 32069 establece diversos procedimientos de selección. ¿Cuál de los siguientes es un procedimiento competitivo en la nueva normativa?",
+      "alternativas": [
+        {"id": "A", "texto": "Adjudicación directa."},
+        {"id": "B", "texto": "Subasta inversa electrónica."},
+        {"id": "C", "texto": "Contratación menor."},
+        {"id": "D", "texto": "Invitación a cotizar."}
+      ],
+      "respuesta_correcta": "B",
+      "explicacion": "Conforme a la Ley 32069, la subasta inversa electrónica es un procedimiento competitivo. Adjudicación directa y contratación menor son no competitivos.",
+      "fundamento": {
+        "ley": "Ley 32069",
+        "articulos": ["Art. 54", "Art. 55", "Art. 56"],
+        "reglamento": "DS 009-2025-EF",
+        "fuente": "Ley 32069 y DS 009-2025-EF"
+      }
+    },
+    {
+      "id": "P006",
+      "competencia": "Fase de Selección",
+      "tema": "Buena Pro",
+      "subtema": "Consentimiento y firmeza",
+      "nivel_cognitivo": "Aplicar",
+      "dificultad": "Muy difícil",
+      "tipo": "Caso práctico",
+      "pregunta": "La Buena Pro fue otorgada el 15 de enero. El proveedor perdedor NO interpone recurso de apelación. ¿Cuándo queda la Buena Pro administrativamente firme?",
+      "alternativas": [
+        {"id": "A", "texto": "Inmediatamente al momento de su otorgamiento."},
+        {"id": "B", "texto": "Transcurridos 5 días hábiles desde su notificación sin interponer apelación."},
+        {"id": "C", "texto": "Transcurridos 10 días calendarios desde su notificación."},
+        {"id": "D", "texto": "Cuando se perfecciona el contrato."}
+      ],
+      "respuesta_correcta": "B",
+      "explicacion": "La Ley 32069 establece plazos para recursos. Si no se interpone recurso en el plazo legal, la Buena Pro se consolida por consentimiento.",
+      "fundamento": {
+        "ley": "Ley 32069",
+        "articulos": ["Art. 75", "Art. 76"],
+        "reglamento": "DS 009-2025-EF",
+        "fuente": "Ley 32069 y DS 009-2025-EF"
+      }
+    },
+    {
+      "id": "P007",
+      "competencia": "Ejecución Contractual",
+      "tema": "Modificaciones del contrato",
+      "subtema": "Adicionales y reducciones",
+      "nivel_cognitivo": "Analizar",
+      "dificultad": "Muy difícil",
+      "tipo": "Caso práctico",
+      "pregunta": "En un contrato de obra por S/ 500,000, a los 3 meses de ejecución surgen cambios en las condiciones del terreno que requieren obras adicionales por S/ 80,000 (16% del monto original). ¿Es procedente esta adicional conforme a la Ley 32069?",
+      "alternativas": [
+        {"id": "A", "texto": "No, porque excede el porcentaje permitido de ampliación."},
+        {"id": "B", "texto": "Sí, pero solo si está previamente contemplado en cláusulas de riesgo."},
+        {"id": "C", "texto": "Sí, si existe justificación técnica y está respaldado en normas de riesgos."},
+        {"id": "D", "texto": "No, toda ampliación requiere licitación nueva."}
+      ],
+      "respuesta_correcta": "C",
+      "explicacion": "La Ley 32069 permite modificaciones (adicionales, reducciones) en obras si existe justificación técnica documentada y se cumplen requisitos procedimentales.",
+      "fundamento": {
+        "ley": "Ley 32069",
+        "articulos": ["Art. 90", "Art. 91"],
+        "reglamento": "DS 009-2025-EF",
+        "fuente": "Ley 32069 y DS 009-2025-EF"
+      }
+    },
+    {
+      "id": "P008",
+      "competencia": "Ejecución Contractual",
+      "tema": "Resolución de contrato",
+      "subtema": "Causales",
+      "nivel_cognitivo": "Aplicar",
+      "dificultad": "Difícil",
+      "tipo": "Aplicación normativa",
+      "pregunta": "¿Cuál de los siguientes es una causal para resolver un contrato de acuerdo a la Ley 32069?",
+      "alternativas": [
+        {"id": "A", "texto": "Cambio de administración en la entidad contratante."},
+        {"id": "B", "texto": "Incumplimiento injustificado del proveedor con perjuicio para la entidad."},
+        {"id": "C", "texto": "Disminución de la calidad aunque se cumpla con especificaciones."},
+        {"id": "D", "texto": "Insatisfacción del usuario final con el bien o servicio."}
+      ],
+      "respuesta_correcta": "B",
+      "explicacion": "La Ley 32069, Art. 92, establece causales de resolución como incumplimiento injustificado del proveedor con efectos perjudiciales.",
+      "fundamento": {
+        "ley": "Ley 32069",
+        "articulos": ["Art. 92", "Art. 93"],
+        "reglamento": "DS 009-2025-EF",
+        "fuente": "Ley 32069 y DS 009-2025-EF"
+      }
+    },
+    {
+      "id": "P009",
+      "competencia": "Actuaciones Preparatorias",
+      "tema": "Revisión del requerimiento",
+      "subtema": "Validación inicial",
+      "nivel_cognitivo": "Aplicar",
+      "dificultad": "Difícil",
+      "tipo": "Caso práctico",
+      "pregunta": "La Unidad de Recursos Humanos presenta requerimiento para capacitación S/ 95,000 sin especificar resultados esperados ni competencias. ¿Acción correcta conforme a Ley 32069?",
+      "alternativas": [
+        {"id": "A", "texto": "Rechazar y devolver para que complete información."},
+        {"id": "B", "texto": "Aceptar y complementar en términos de referencia."},
+        {"id": "C", "texto": "Presentar expediente tal como está."},
+        {"id": "D", "texto": "Derivar a presupuesto para evaluar monto."}
+      ],
+      "respuesta_correcta": "A",
+      "explicacion": "Art. 44 de Ley 32069 requiere revisar que el requerimiento sea suficientemente claro. Si está incompleto, debe rechazarse y solicitarse información complementaria.",
+      "fundamento": {
+        "ley": "Ley 32069",
+        "articulos": ["Art. 44", "Art. 45"],
+        "reglamento": "DS 009-2025-EF",
+        "fuente": "Ley 32069 y DS 009-2025-EF"
+      }
+    },
+    {
+      "id": "P010",
+      "competencia": "Fase de Selección",
+      "tema": "Plazos procedimentales",
+      "subtema": "Etapas y cronograma",
+      "nivel_cognitivo": "Comprender",
+      "dificultad": "Medio-Alto",
+      "tipo": "Conocimiento normativo",
+      "pregunta": "¿Cuál es el plazo mínimo legal entre la convocatoria pública y la fecha límite de presentación de propuestas en un procedimiento de selección competitivo, según la Ley 32069?",
+      "alternativas": [
+        {"id": "A", "texto": "5 días hábiles."},
+        {"id": "B", "texto": "10 días hábiles."},
+        {"id": "C", "texto": "15 días hábiles."},
+        {"id": "D", "texto": "La ley no establece plazo mínimo específico."}
+      ],
+      "respuesta_correcta": "C",
+      "explicacion": "La Ley 32069 y su Reglamento (DS 009-2025-EF) establecen 15 días hábiles como plazo mínimo entre convocatoria y cierre de oferta en procedimientos competitivos.",
+      "fundamento": {
+        "ley": "Ley 32069",
+        "articulos": ["Art. 58", "Art. 59"],
+        "reglamento": "DS 009-2025-EF",
+        "fuente": "Ley 32069 y DS 009-2025-EF"
+      }
+    }
+  ]
+}

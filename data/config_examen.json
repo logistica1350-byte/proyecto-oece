@@ -1,0 +1,187 @@
+{
+  "version": "1.0.0",
+  "fecha_generacion": "2026-10-07",
+  "fecha_corte_normativa": "2026-05-22",
+  "nivel": "Avanzado",
+  "nombre": "Simulador de Certificación en Contrataciones Públicas Peruanas",
+  "descripcion": "Examen de certificación para compradores públicos - Ley 32069",
+  "institucion": "OECE - Organismo Especializado en Contrataciones Públicas Eficientes",
+  "total_preguntas_banco": 200,
+  "cantidad_preguntas_examen": 72,
+  "tiempo_minutos": 120,
+  "seleccion_aleatoria": true,
+  "aleatorizar_alternativas": true,
+  "modo_practica": true,
+  "distribucion_tematica": [
+    {
+      "id": 1,
+      "competencia": "Actuaciones Preparatorias",
+      "peso_porcentual": 34.72,
+      "cantidad_banco": 69,
+      "cantidad_examen": 25,
+      "subtemas": [
+        {
+          "id": "1.1",
+          "nombre": "Expediente de contratación",
+          "cantidad_banco": 12,
+          "cantidad_examen": 4
+        },
+        {
+          "id": "1.2",
+          "nombre": "Actividades preparatorias",
+          "cantidad_banco": 32,
+          "cantidad_examen": 11
+        },
+        {
+          "id": "1.3-1.8",
+          "nombre": "Temas específicos (evaluadores, documentos, Plan Anual, PLADICOP)",
+          "cantidad_banco": 25,
+          "cantidad_examen": 10
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "competencia": "Fase de Selección",
+      "peso_porcentual": 30.56,
+      "cantidad_banco": 61,
+      "cantidad_examen": 22,
+      "subtemas": [
+        {
+          "id": "2.1",
+          "nombre": "Procedimientos y modalidades",
+          "cantidad_banco": 10,
+          "cantidad_examen": 4
+        },
+        {
+          "id": "2.2",
+          "nombre": "Plazos y etapas",
+          "cantidad_banco": 15,
+          "cantidad_examen": 5
+        },
+        {
+          "id": "2.3-2.10",
+          "nombre": "Temas específicos (evaluador, Buena Pro, recursos, perfeccionamiento)",
+          "cantidad_banco": 36,
+          "cantidad_examen": 13
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "competencia": "Ejecución Contractual",
+      "peso_porcentual": 34.72,
+      "cantidad_banco": 70,
+      "cantidad_examen": 25,
+      "subtemas": [
+        {
+          "id": "3.1-3.5",
+          "nombre": "Ejecución general",
+          "cantidad_banco": 18,
+          "cantidad_examen": 7
+        },
+        {
+          "id": "3.6-3.12",
+          "nombre": "Contrataciones de obras",
+          "cantidad_banco": 52,
+          "cantidad_examen": 18
+        }
+      ]
+    }
+  ],
+  "distribucion_dificultad": [
+    {
+      "nivel": "Medio-Alto",
+      "porcentaje": 10,
+      "cantidad_banco": 20,
+      "cantidad_examen": 8
+    },
+    {
+      "nivel": "Difícil",
+      "porcentaje": 20,
+      "cantidad_banco": 40,
+      "cantidad_examen": 14
+    },
+    {
+      "nivel": "Muy Difícil",
+      "porcentaje": 40,
+      "cantidad_banco": 80,
+      "cantidad_examen": 30
+    },
+    {
+      "nivel": "Extremadamente Difícil",
+      "porcentaje": 30,
+      "cantidad_banco": 60,
+      "cantidad_examen": 20
+    }
+  ],
+  "niveles_cognitivos": [
+    {
+      "nivel": "Recordar",
+      "porcentaje": 5
+    },
+    {
+      "nivel": "Comprender",
+      "porcentaje": 10
+    },
+    {
+      "nivel": "Aplicar",
+      "porcentaje": 25
+    },
+    {
+      "nivel": "Analizar",
+      "porcentaje": 40
+    },
+    {
+      "nivel": "Evaluar",
+      "porcentaje": 15
+    },
+    {
+      "nivel": "Crear",
+      "porcentaje": 5
+    }
+  ],
+  "tipos_preguntas": [
+    {
+      "tipo": "Conocimiento Normativo",
+      "porcentaje": 10
+    },
+    {
+      "tipo": "Interpretación Normativa",
+      "porcentaje": 15
+    },
+    {
+      "tipo": "Aplicación de Normas",
+      "porcentaje": 17.5
+    },
+    {
+      "tipo": "Análisis de Casos",
+      "porcentaje": 25
+    },
+    {
+      "tipo": "Identificación de Errores",
+      "porcentaje": 10
+    },
+    {
+      "tipo": "Comparación de Alternativas",
+      "porcentaje": 12.5
+    },
+    {
+      "tipo": "Análisis de Excepciones",
+      "porcentaje": 7.5
+    },
+    {
+      "tipo": "Análisis Cronológico",
+      "porcentaje": 2.5
+    }
+  ],
+  "criterios_seleccion": {
+    "minimo_puntuacion_calidad": 27,
+    "respetar_proporcionalidad_tematica": true,
+    "equilibrar_dificultad": true,
+    "equilibrar_tipos_pregunta": true,
+    "evitar_duplicados": true,
+    "priorizar_nivel_avanzado": true
+  },
+  "regla_absoluta": "NO REDUCIR LA DIFICULTAD PARA COMPLETAR LAS 72 PREGUNTAS"
+}
